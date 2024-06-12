@@ -10,9 +10,9 @@ const ExpenseCategory = ({ items, category }) => {
         <div className="expense-category">
             <h2 className="expense-title">{category}</h2>
             <div className="expense-header">
-                <span className="expense-item-title">Item</span>
-                <span className="expense-item-title">Amount</span>
-                <span className="expense-item-title">Date</span>
+                <span className="expense-item-title">Purchase Item</span>
+                <span className="expense-item-title">Purchase Amount</span>
+                <span className="expense-item-title">Purchase Date</span>
             </div>
             {filteredItems.map((item, index) => {
                 if (category === item.budgetCategory) {
