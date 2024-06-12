@@ -1,0 +1,14 @@
+.expense-item-container {
+    max-width: 1000px;
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr 1fr;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.expense-item {
+    padding: 10px 20px; /* Adjusted padding for better alignment */
+    display: flex;
+    align-items: center; /* Center items vertically */
+    justify-content: center; /* Center items horizontally */
+}

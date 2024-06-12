@@ -1,0 +1,37 @@
+.btn {
+    border: none; /* Remove default border */
+    color: white; /* Text color */
+    padding: 10px 20px; /* Padding inside the button */
+    text-align: center; /* Center text */
+    text-decoration: none; /* Remove underline */
+    display: inline-block; /* Inline-block for proper margin and padding */
+    font-size: 16px; /* Font size */
+    margin: 4px 2px; /* Margin for spacing */
+    cursor: pointer; /* Pointer cursor on hover */
+    border-radius: 12px; /* Rounded corners */
+    transition: background-color 0.3s ease; /* Smooth transition for hover effect */
+}
+
+.btn-update {
+    background-color: #87CEEB; /* Light blue background color */
+}
+
+.btn-update:hover {
+    background-color: #0066ff; /* Darker blue on hover */
+}
+
+.btn-delete {
+    background-color: #FF9488; /* Light red background color */
+}
+
+.btn-delete:hover {
+    background-color: #FF1B00; /* Darker red on hover */
+}
+
+.btn-add {
+    background-color: rgb(36, 233, 36);
+}
+
+.btn-add:hover{
+    background-color: green;
+}
