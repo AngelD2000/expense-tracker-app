@@ -38,18 +38,14 @@ function App() {
   const [items, setItems] = useState(dummyItems);
 
   const addOnclick = () => {
-    console.log("Add is clicked!")
     setOpenInput(true);
 
   }
 
   const handleOnSubmit = (event) => {
     event.preventDefault();
-    console.log("Onsubmit clicked!")
     setOpenInput(false)
-    console.log("newItem: " + newItem)
     setItems((prevItems) => [...prevItems, newItem])
-    console.log(items)
     setNewItem({
       "purchaseItem": "",
       "purhcaseAmount": "",
@@ -61,7 +57,6 @@ function App() {
 
   const handleNewItemInput = (event) => {
     event.preventDefault();
-    console.log("handleNewItemInput")
     const { name, value } = event.target
     setNewItem((prevItem) => ({
       ...prevItem,
