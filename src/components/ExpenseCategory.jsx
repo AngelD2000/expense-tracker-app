@@ -2,9 +2,21 @@ import React from "react";
 import ExpenseItem from "./ExpenseItem";
 import './ExpenseCategory.css'
 
-const ExpenseCategory = ({ items, category }) => {
+const ExpenseCategory = ({ items, category, setItems }) => {
+
     const filteredItems = items.filter(items => items.budgetCategory === category)
     if (!filteredItems.length) return null;
+
+    const handleOnclickDelete = (item) => {
+        const newItemList = items.filter((itm) => itm !== item)
+        setItems(newItemList)
+    }
+
+    const handleUpdateItems = (updatedItem, index) => {
+        setItems((prevItem) => prevItem.map((itm, itmIndex)=> index === itmIndex ? updatedItem : itm))
+    }
+
+
 
     return (
         <div className="expense-category">
@@ -14,15 +26,18 @@ const ExpenseCategory = ({ items, category }) => {
                 <span className="expense-item-title">Purchase Amount</span>
                 <span className="expense-item-title">Purchase Date</span>
             </div>
-            {filteredItems.map((item, index) => {
-                if (category === item.budgetCategory) {
+            {
+                filteredItems.map((item, index) => {
                     return <ExpenseItem
-                        item={item.purchaseItem}
-                        amount={item.purhcaseAmount}
-                        date={item.purhcaseDate}
+                        item={item}
+                        index={index}
+                        handleOnclickDelete={() => handleOnclickDelete(item)}
+                        handleUpdateItems={handleUpdateItems}
+
                     />
-                }
-            })}
+                })
+            }
+
         </div>
     )
 }

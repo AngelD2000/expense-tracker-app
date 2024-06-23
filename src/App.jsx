@@ -3,25 +3,37 @@ import ExpenseCategory from './components/ExpenseCategory';
 import Button from "./components/Button";
 import { useState } from 'react';
 
+/**
+ * TODO: 
+ *  - Fix update handlers to update the information of an item (DONE)
+ *    - BUG: If you add a new item and update the new item it will not replace but add another entry and gets rid of the other category 
+ *           But only when it goes over the number of things in that category
+ *            OK: Delete floss -> add something -> update something
+ *            NOT OK -> Add something -> update something
+ *  - Be able to update categories
+ *  - "Automatically" add a category when a new category is being added along with the item
+ * 
+ */
+
 const categories = ["misc", "fun"]
 
 const dummyItems = [
   {
     "purchaseItem": "floss",
-    "purhcaseAmount": "5.00",
-    "purhcaseDate": "06/08/2024",
+    "purchaseAmount": "5.00",
+    "purchaseDate": "06/08/2024",
     "budgetCategory": "misc"
   },
   {
     "purchaseItem": "toothpaste",
-    "purhcaseAmount": "10.00",
-    "purhcaseDate": "06/08/2024",
+    "purchaseAmount": "10.00",
+    "purchaseDate": "06/08/2024",
     "budgetCategory": "misc"
   },
   {
     "purchaseItem": "genshin",
-    "purhcaseAmount": "20.00",
-    "purhcaseDate": "06/08/2024",
+    "purchaseAmount": "20.00",
+    "purchaseDate": "06/08/2024",
     "budgetCategory": "fun"
   }
 ]
@@ -31,8 +43,8 @@ function App() {
   const [isOpenInput, setOpenInput] = useState(false);
   const [newItem, setNewItem] = useState({
     "purchaseItem": "",
-    "purhcaseAmount": "",
-    "purhcaseDate": "",
+    "purchaseAmount": "",
+    "purchaseDate": "",
     "budgetCategory": ""
   });
   const [items, setItems] = useState(dummyItems);
@@ -48,8 +60,8 @@ function App() {
     setItems((prevItems) => [...prevItems, newItem])
     setNewItem({
       "purchaseItem": "",
-      "purhcaseAmount": "",
-      "purhcaseDate": "",
+      "purchaseAmount": "",
+      "purchaseDate": "",
       "budgetCategory": ""
     })
 
@@ -72,8 +84,8 @@ function App() {
       {isOpenInput &&
         <form onSubmit={handleOnSubmit}>
           <label>Purchased Item:  <input name="purchaseItem" value={newItem.purchaseItem} onChange={handleNewItemInput} /></label>
-          <label>Purchased Amount:  <input name="purhcaseAmount" value={newItem.purhcaseAmount} onChange={handleNewItemInput} /></label>
-          <label>Purchased Date:  <input name="purhcaseDate" value={newItem.purhcaseDate} onChange={handleNewItemInput} /></label>
+          <label>Purchased Amount:  <input name="purchaseAmount" value={newItem.purchaseAmount} onChange={handleNewItemInput} /></label>
+          <label>Purchased Date:  <input name="purchaseDate" value={newItem.purchaseDate} onChange={handleNewItemInput} /></label>
           <label>Purchased Category:  <input name="budgetCategory" value={newItem.budgetCategory} onChange={handleNewItemInput} /></label>
           <button type='submit' value='Submit'>Submit</button>
         </form>
@@ -82,6 +94,7 @@ function App() {
         <ExpenseCategory
           items={items}
           category={category}
+          setItems={setItems}
         />)}
       <div className="additm-container">
 
