@@ -6,16 +6,17 @@ import { useState } from 'react';
 /**
  * TODO: 
  *  - Fix update handlers to update the information of an item (DONE)
- *    - BUG: If you add a new item and update the new item it will not replace but add another entry and gets rid of the other category 
+ *    - DONE: If you add a new item and update the new item it will not replace but add another entry and gets rid of the other category
  *           But only when it goes over the number of things in that category
  *            OK: Delete floss -> add something -> update something
  *            NOT OK -> Add something -> update something
- *  - Be able to update categories
- *  - "Automatically" add a category when a new category is being added along with the item
+ *  - "Automatically" add a category when a new category is being added along with the item (DONE)
+ *  - Be able to update category names
+ *  - Be able to delete category names when there are no more items under that category 
  * 
  */
 
-const categories = ["misc", "fun"]
+const dummyCategories = ["misc", "fun"]
 
 const dummyItems = [
   {
@@ -48,6 +49,7 @@ function App() {
     "budgetCategory": ""
   });
   const [items, setItems] = useState(dummyItems);
+  const [categories, setCategories] = useState(dummyCategories)
 
   const addOnclick = () => {
     setOpenInput(true);
@@ -58,6 +60,7 @@ function App() {
     event.preventDefault();
     setOpenInput(false)
     setItems((prevItems) => [...prevItems, newItem])
+    if(categories.indexOf(newItem.budgetCategory) === -1) setCategories((prevItems) => [...prevItems, newItem.budgetCategory] )  
     setNewItem({
       "purchaseItem": "",
       "purchaseAmount": "",
