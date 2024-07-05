@@ -13,7 +13,11 @@ const ExpenseCategory = ({ items, category, setItems }) => {
     }
 
     const handleUpdateItems = (updatedItem, index) => {
-        setItems((prevItem) => prevItem.map((itm, itmIndex)=> index === itmIndex ? updatedItem : itm))
+        const originalIndex = items.findIndex((item) => item.purchaseItem === updatedItem.purchaseItem)
+        console.log(updatedItem)
+        console.log(originalIndex)
+        console.log(index)
+        setItems((prevItem) => prevItem.map((itm, itmIndex)=> originalIndex === itmIndex ? updatedItem : itm))
     }
 
 
